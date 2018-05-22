@@ -26,11 +26,6 @@ class ApiController {
       //判断路由参数，确定是注册还是登陆
       if (query.status === "register") {
         //注册
-        if (!number || number == "" || !password || password == "") {
-          return res.status(401).json({
-            msg: '请检验您的信息是否全部填写！'
-          })
-        }
         loginData = this.apiService.userRegister(number, password).then(data => {
           res.status(200).json(data);
         }).catch(err => {
@@ -41,11 +36,6 @@ class ApiController {
         });
       } else {
         //登陆
-        if (!number || number == "" || !password || password == "") {
-          return res.status(401).json({
-            msg: '请检验您的信息是否全部填写！'
-          })
-        }
         loginData = this.apiService.userLand(number, password).then(data => {
           res.status(200).json(data);
         }).catch(err => {

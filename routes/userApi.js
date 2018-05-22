@@ -10,6 +10,6 @@ const apiController = new ApiController()
  */
 
 //登陆注册路由
-router.post('/users', apiController.userLogin.bind(apiController))
+router.post('/users', checkAuth, apiController.userLogin.bind(apiController))
 
 module.exports = router
