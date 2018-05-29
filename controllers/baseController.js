@@ -9,7 +9,12 @@ class baseController {
     }
 
     json(status, data) {
-        return this.res.json(status, this.results(data))
+        return this.res.status(200).json(status, this.result(data.content))
+    }
+
+    result(data){
+        this.results.content = data;
+        return this.results
     }
 
 }

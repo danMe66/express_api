@@ -6,8 +6,9 @@ const ApiService = require("../services/apiService");
  * 业务逻辑层
  * 主要对业务逻辑进行处理
  */
-class ApiController {
+class ApiController extends BaseController {
   constructor() {
+    super();
     this.apiService = new ApiService();
   }
 
@@ -16,7 +17,7 @@ class ApiController {
    * @param req
    * @param res
    */
-  userLogin(req, res) {
+  userLogin (req, res) {
     try {
       const query = req.query
       const number = req.body.number
@@ -27,7 +28,7 @@ class ApiController {
       if (query.status === "register") {
         //注册
         loginData = this.apiService.userRegister(number, password).then(data => {
-          res.status(200).json(data);
+          res.status(200).json(this.result(data));
         }).catch(err => {
           logger.error(err);
           res.status(400).json({
@@ -37,12 +38,15 @@ class ApiController {
       } else {
         //登陆
         loginData = this.apiService.userLand(number, password).then(data => {
-          res.status(200).json(data);
+          // jsonData=super.json(200,data)
+          //this.json(data);
+          res.status(200).json(this.result(data))
         }).catch(err => {
           logger.error(err);
-          res.status(400).json({
-            ms: err
-          });
+          //res.status(400).json({
+            //ms: err
+          //});
+          res.status(400).json(err)
         });
       }
     } catch (e) {
