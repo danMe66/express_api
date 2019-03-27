@@ -19,9 +19,9 @@ class ApiController extends BaseController {
    */
   userLogin (req, res) {
     try {
-      const query = req.query
-      const number = req.body.number
-      const password = req.body.password
+      const query = req.query;
+      const number = req.body.number;
+      const password = req.body.password;
       let loginData;
 
       //判断路由参数，确定是注册还是登陆

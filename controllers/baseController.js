@@ -12,7 +12,7 @@ class baseController {
         return this.res.status(200).json(status, this.result(data.content))
     }
 
-    result(data){
+    result(data) {
         this.results.content = data;
         return this.results
     }

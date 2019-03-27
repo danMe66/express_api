@@ -6,4 +6,4 @@ module.exports = {
         database: "githubdemo",
         port: 3306
     }
-}
+};
